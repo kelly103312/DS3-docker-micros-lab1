@@ -36,7 +36,18 @@ const resolvers = {
         return "Error al obtener datos de besoscerezas";
     }
   },
-    service3: () => "Hola, soy servicio3 Cachetada con Trucha !",
+    service3: async () => {
+      try {
+        const response = await axios.get('http://cachetadita:9090/cachetadita');
+        console.log(response.data)
+        const data = response.data.message;
+        
+        return data; 
+      } catch (err) {
+          console.error("Error al obtener datos de cachetadita", err);
+          return "Error al obtener datos de cachetadita";
+      }
+    },
   },
 };
 

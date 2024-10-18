@@ -11,6 +11,7 @@ services:
       - authservice
       - redis
       - salchipapitas
+      - besoscerezas
 
   authservice:
     build:
@@ -40,6 +41,14 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8080:8080"
+    depends_on:
+      - redis
+  cachetadita:
+    build:
+      context: ./cachetadacontrucha
+      dockerfile: Dockerfile
+    ports:
+      - "9090:9090"
     depends_on:
       - redis
 
